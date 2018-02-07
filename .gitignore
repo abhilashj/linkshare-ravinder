@@ -31,3 +31,20 @@
 
 # "temporary" build files
 /target
+
+
+Thumbs.db
+.DS_Store
+.gradle
+build/
+.idea
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
+.asscache
+hs_err*
+out/artifacts/linkshare/
+src/main/webapp/
