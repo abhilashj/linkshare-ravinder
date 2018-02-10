@@ -49,6 +49,7 @@ class User implements Serializable {
         email blank: false, unique: true
         firstName blank: false
         lastName blank: false, nullable: true
+        photo nullable: true
     }
 
     User(String username, String password) {

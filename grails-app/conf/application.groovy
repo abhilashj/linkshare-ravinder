@@ -34,6 +34,7 @@ environments {
         }
     }
 }
+//Added by the Database Migration Plugin
 grails.plugin.databasemigration.changelogFileName = 'changelog.groovy'
 grails.plugin.databasemigration.updateOnStart = true
 grails.plugin.databasemigration.updateOnStartFileNames = 'changelog.groovy'

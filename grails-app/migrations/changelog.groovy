@@ -83,4 +83,6 @@ databaseChangeLog = {
     changeSet(author: "ravinder (generated)", id: "1517999677618-8") {
         addForeignKeyConstraint(baseColumnNames: "role_id", baseTableName: "user_role", constraintName: "FK_it77eq964jhfqtu54081ebtio", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "role")
     }
+    include file: '10-2-1018-initial-database.groovy'
+    include file: '10-2-2018-added-domains.groovy'
 }
