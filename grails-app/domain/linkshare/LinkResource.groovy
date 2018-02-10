@@ -1,9 +1,9 @@
 package linkshare
 
-class LinkResource {
+class LinkResource extends Resource{
 
     String filePath
     static constraints = {
-        filePath nullable: false, blank: false
+        filePath nullable: true, blank: false
     }
 }

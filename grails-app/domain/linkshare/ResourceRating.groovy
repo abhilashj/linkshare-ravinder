@@ -4,9 +4,8 @@ import spring.User
 
 class ResourceRating {
 
-    Resource resource
-    User user
-    Integer score
+    Integer score = 0 as Integer
+    static belongsTo = [user: User,resource: Resource]
     static constraints = {
         score nullable: false, blank:false
     }

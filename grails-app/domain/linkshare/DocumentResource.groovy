@@ -1,9 +1,9 @@
 package linkshare
 
-class DocumentResource {
+class DocumentResource extends Resource{
 
     String url
     static constraints = {
-        url nullable: false, blank: false
+        url nullable: true, blank: false
     }
 }

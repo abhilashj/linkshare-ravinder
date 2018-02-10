@@ -5,13 +5,17 @@ import spring.User
 class Topic {
 
     String name
-    User createdBy
     Date dateCreated
     Date lastUpdated
     Visibility visibility
+    static belongsTo = [user: User]
+    static hasMany = [subscriptions: Subscription,resources: Resource]
+    static mapping = {
+        subscriptions cascade: 'all-delete-orphan'
+        resources cascade: 'save-update'
+    }
     static constraints = {
-        name nullable: false, blank: false, unique: true, size: 4..40
-        createdBy nullable: false, blank: false
+        name nullable: false, blank: false, unique: true
         visibility nullable: false, blank: false
     }
 }

@@ -4,10 +4,8 @@ import spring.User
 
 class ReadingItem {
 
-    Resource resource
-    User user
     Boolean isRead = Boolean.FALSE
+    static belongsTo = [user: User,resource: Resource]
     static constraints = {
-        isRead nullable: false, blank: false
     }
 }
