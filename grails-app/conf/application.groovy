@@ -39,18 +39,16 @@ grails.plugin.databasemigration.changelogFileName = 'changelog.groovy'
 grails.plugin.databasemigration.updateOnStart = true
 grails.plugin.databasemigration.updateOnStartFileNames = 'changelog.groovy'
 
-/*grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/User/success'//default
-grails.plugin.springsecurity.failureHandler.defaultFailureUrl = '/User/index'//default*/
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = "/" /*'/User/index'*/
-grails.plugin.springsecurity.failureHandler.defaultFailureUrl = "/"
-grails.plugin.springsecurity.logout.postOnly = false
-grails.plugin.springsecurity.auth.loginFromUrl = '/User/index'
-
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'spring.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'spring.UserRole'
 grails.plugin.springsecurity.authority.className = 'spring.Role'
+
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = "/Homepage/success"
+grails.plugin.springsecurity.failureHandler.defaultFailureUrl = "/Homepage/index"
+grails.plugin.springsecurity.logout.postOnly = false
+grails.plugin.springsecurity.auth.loginFromUrl = "/Homepage/index"
+
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],

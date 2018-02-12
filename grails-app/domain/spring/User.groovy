@@ -17,7 +17,7 @@ class User implements Serializable {
     String email
     String firstName
     String lastName
-    Byte photo
+    byte[] photo
     Boolean admin = Boolean.FALSE
     Boolean active = Boolean.FALSE
     Boolean enabled = Boolean.TRUE
@@ -52,11 +52,11 @@ class User implements Serializable {
         photo nullable: true
     }
 
-    User(String username, String password) {
+    /*User(String username, String password) {
         this()
         this.username = username
         this.password = password
-    }
+    }*/
 
     Set<Role> getAuthorities() {
         UserRole.findAllByUser(this)*.role
