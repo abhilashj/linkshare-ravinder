@@ -1,45 +1,41 @@
 import commandObjects.UserCO
-import grails.plugin.springsecurity.LoginController
+import grails.plugin.springsecurity.SpringSecurityService
+import grails.plugin.springsecurity.annotation.Secured
 import spring.User
 
-class HomepageController extends LoginController {
+@Secured("permitAll")
+class HomepageController {
+    SpringSecurityService springSecurityService
     def userService
 
     def index() {
-        render(view: "/homepage")
+        render(view: "/login/auth")
     }
 
-    def register(UserCO userCO) {
-        User user = new User()
+    def register() {
+        UserCO userCO = new UserCO()
+        bindData(userCO, params)
         if (userCO.validate()) {
-            userService.registerNewUser(userCO, user)
-
-            redirect(controller: 'Homepage')
+            User user = new User(userCO)
+            userService.registerNewUser(user)
+            render(view: "/login/auth")
+            flash.message = "Registered Successfully :)"
         } else {
-            userCO.errors.allErrors.each {
-                println it
-                flash.message = "Registration Failed"
-                redirect(controller: 'Homepage')
-            }
+            render(view: "/login/auth", model: [userCO: userCO])
+            flash.message = "Registration Failed :("
         }
     }
 
-    def login() {
-        Boolean isAdmin = userService.loginUsers(params)
-        if (isAdmin) {
-            redirect(controller: "adminSuccess")
-        } else {
-            redirect(controller: "userSuccess")
-        }
-
+    @Secured(['ROLE_CLIENT', 'ROLE_ADMIN'])
+    def success() {
+        String show = "welcome ${(springSecurityService.currentUser as User)?.username}"
+        show = show + "\n ${createLink(controller: 'logout')}"
+        render(show)
     }
 
-    def adminSuccess() {
-        render(view: "adminDashboard")
-    }
-
-    def userSuccess() {
-        render(view: "userDashboard")
+    def failure(){
+        render(view: "/login/auth")
+        flash.message = "Login failed :)"
     }
 
     def myLogout() {

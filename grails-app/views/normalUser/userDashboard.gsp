@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><g:layoutTitle default="LinkShare"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <asset:stylesheet src="application.css"/>
-    <asset:javascript src="application.js"/>
+    %{--<asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>--}%
     <asset:javascript src="jquery-2.1.3.js"/>
     <asset:javascript src="bootstrap.js"/>
     <asset:stylesheet src="bootstrap.css"/>
@@ -33,7 +33,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right col-md-2">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span>DashBoard</a></li>
-                <li><a href="/homepage.gsp"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+                <li><a href="/login/auth.gsp"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
             </ul>
         </div>
     </nav>

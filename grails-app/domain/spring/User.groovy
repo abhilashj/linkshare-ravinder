@@ -1,5 +1,6 @@
 package spring
 
+import commandObjects.UserCO
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import linkshare.*
@@ -19,13 +20,13 @@ class User implements Serializable {
     String lastName
     byte[] photo
     Boolean admin = Boolean.FALSE
-    Boolean active = Boolean.FALSE
-    Boolean enabled = Boolean.TRUE
     Date dateCreated
     Date lastUpdated
-    /*boolean accountExpired
+    boolean active
+    boolean enabled
+    boolean accountExpired
     boolean accountLocked
-    boolean passwordExpired*/
+    boolean passwordExpired
     static hasMany = [
             topics         : Topic,
             subscriptions  : Subscription,
@@ -52,11 +53,11 @@ class User implements Serializable {
         photo nullable: true
     }
 
-    /*User(String username, String password) {
+    User(String username, String password) {
         this()
         this.username = username
         this.password = password
-    }*/
+    }
 
     Set<Role> getAuthorities() {
         UserRole.findAllByUser(this)*.role
@@ -77,5 +78,15 @@ class User implements Serializable {
     }
 
     static transients = ['springSecurityService']
+
+    User(UserCO userCO){
+        this.username = userCO.username
+        this.email = userCO.email
+        this.password = userCO.password
+        this.firstName = userCO.firstName
+        this.lastName = userCO.lastName
+        this.photo = userCO.photo
+    }
+
 
 }
